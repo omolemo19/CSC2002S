@@ -43,7 +43,7 @@ public class MonteCarloMinimizationParallel extends RecursiveAction {
     @Override
     protected void compute() {
 
-        if (end - start <= 2000){
+        if (end - start <= num_searches/4){
 
             min=Integer.MAX_VALUE;
             int local_min=Integer.MAX_VALUE;
