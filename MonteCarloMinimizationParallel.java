@@ -1,15 +1,14 @@
 package MonteCarloMini;
-import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.ForkJoinPool;
 import java.util.Random;
 
 public class MonteCarloMinimizationParallel extends RecursiveAction {
-    static final boolean DEBUG = true;
+    static final boolean DEBUG = false;
 
     static long startTime = 0;
     static long endTime = 0;
-    private static int finder;
+    static int finder;
     private static int min;
     private Search[] s;
     private int start;
@@ -44,7 +43,7 @@ public class MonteCarloMinimizationParallel extends RecursiveAction {
     @Override
     protected void compute() {
 
-        if (end - start <= 5000){
+        if (end - start <= 2000){
 
             min=Integer.MAX_VALUE;
             int local_min=Integer.MAX_VALUE;
@@ -136,6 +135,7 @@ public class MonteCarloMinimizationParallel extends RecursiveAction {
         System.out.printf("Grid points visited: %d  (%2.0f%s)\n",tmp,(tmp/(rows*columns*1.0))*100.0, "%");
         tmp=terrain.getGrid_points_evaluated();
         System.out.printf("Grid points evaluated: %d  (%2.0f%s)\n",tmp,(tmp/(rows*columns*1.0))*100.0, "%");
+
 
         /* Results*/
         System.out.printf("Global minimum: %d at x=%.1f y=%.1f\n\n", min, terrain.getXcoord(searches[finder].getPos_row()), terrain.getYcoord(searches[finder].getPos_col()) );
