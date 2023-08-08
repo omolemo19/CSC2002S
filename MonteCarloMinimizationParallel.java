@@ -36,6 +36,8 @@ public class MonteCarloMinimizationParallel extends RecursiveAction {
     static Search [] searches;		// Array of searches
     static Random rand = new Random();  //the random number generator
 
+    static int processors = Runtime.getRuntime().availableProcessors();
+
 
     public MonteCarloMinimizationParallel(Search [] s, int start, int end){this.s = s; this.start = start; this.end = end;}
 
@@ -43,7 +45,7 @@ public class MonteCarloMinimizationParallel extends RecursiveAction {
     @Override
     protected void compute() {
 
-        if (end - start <= num_searches/4){
+        if (end - start <= num_searches/processors){
 
             min=Integer.MAX_VALUE;
             int local_min=Integer.MAX_VALUE;
