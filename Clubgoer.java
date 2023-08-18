@@ -22,7 +22,11 @@ public class Clubgoer extends Thread {
 	private boolean thirsty;
 	private boolean wantToLeave;
 	
-	private int ID; //thread ID 
+	private int ID; //thread ID
+
+	static CountDownLatch latch;
+
+	static AtomicBoolean isPaused = new AtomicBoolean(false);
 
 	
 	Clubgoer( int ID,  PeopleLocation loc,  int speed) {
@@ -53,13 +57,28 @@ public class Clubgoer extends Thread {
 
 	//check to see if user pressed pause button
 	private void checkPause() {
-		// THIS DOES NOTHING - MUST BE FIXED  	
-        
-    }
+		// THIS DOES NOTHING - MUST BE FIXED
+		while (isPaused.get()) {
+			try {
+				sleep(100);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+				return;
+			}
+		}
+
+
+		}
 	private void startSim() {
-		// THIS DOES NOTHING - MUST BE FIXED  	
-        
-    }
+		// THIS DOES NOTHING - MUST BE FIXED
+		try {
+			latch.await();
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+
+
+	}
 	
 	//get drink at bar
 		private void getDrink() throws InterruptedException {
@@ -134,7 +153,7 @@ public class Clubgoer extends Thread {
 	
 	public void run() {
 		try {
-			startSim(); 
+			startSim();
 			checkPause();
 			sleep(movingSpeed*(rand.nextInt(100)+1)); //arriving takes a while
 			checkPause();
