@@ -70,7 +70,10 @@ public class ClubGrid {
 		return true;
 	}
 	
-	public GridBlock enterClub(PeopleLocation myLocation) throws InterruptedException  {
+	public synchronized GridBlock enterClub(PeopleLocation myLocation) throws InterruptedException  {
+		while (counter.overCapacity()){
+			wait();
+		}
 		counter.personArrived(); //add to counter of people waiting 
 		entrance.get(myLocation.getID());
 		counter.personEntered(); //add to counter
@@ -107,7 +110,7 @@ public class ClubGrid {
 	} 
 	
 
-	public  void leaveClub(GridBlock currentBlock,PeopleLocation myLocation)   {
+	public synchronized void leaveClub(GridBlock currentBlock,PeopleLocation myLocation)   {
 			currentBlock.release();
 			counter.personLeft(); //add to counter
 			myLocation.setInRoom(false);
