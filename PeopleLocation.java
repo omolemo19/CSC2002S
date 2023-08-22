@@ -30,7 +30,7 @@ public class PeopleLocation  { // this is a separate class so don't have to acce
 	public boolean getArrived() {
 		return arrived.get();
 	}
-	public void setArrived() {
+	public synchronized void setArrived() {
 		this.arrived.set(true);;
 	}
 

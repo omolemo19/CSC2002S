@@ -35,20 +35,23 @@ public class PeopleCounter {
 	}
 	
 	//someone arrived outside
-	synchronized public void personArrived() {
+	public synchronized void personArrived() {
 		peopleOutSide.getAndIncrement();
+		notifyAll();
 	}
 	
 	//someone got inside
-	synchronized public void personEntered() {
+	public synchronized void personEntered() {
 		peopleOutSide.getAndDecrement();
 		peopleInside.getAndIncrement();
+		notifyAll();
 	}
 
 	//someone left
 	synchronized public void personLeft() {
 		peopleInside.getAndDecrement();
 		peopleLeft.getAndIncrement();
+		notifyAll();
 		
 	}
 	//too many people inside

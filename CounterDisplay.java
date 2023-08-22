@@ -31,7 +31,7 @@ public class CounterDisplay  implements Runnable {
         	}
         	else inside.setForeground(Color.BLACK);
         	inside.setText("Inside: " + score.getInside() + "    "); 
-            waiting.setText("Waiting:" +  score.getWaiting()+ "    " );
+            waiting.setText("Waiting:" + score.getWaiting()+ "    " );
             left.setText("Left:" + score.getLeft()+ "    " ); 
         }
     }

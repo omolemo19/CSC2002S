@@ -83,7 +83,7 @@ public class Clubgoer extends Thread {
 	//get drink at bar
 		private void getDrink() throws InterruptedException {
 			//FIX SO BARMAN GIVES THE DRINK AND IT IS NOT AUTOMATIC
-			
+
 			System.out.println("Thread "+this.ID + " got drink at bar position: " + getX()  + " " +getY() );
 			sleep(getSpeed()*5);  //wait a bit
 			thirsty=false;
@@ -93,6 +93,7 @@ public class Clubgoer extends Thread {
 	//DO NOT CHANGE THE CODE BELOW HERE - it is not necessary
 	//clubgoer enters club
 	public void enterClub() throws InterruptedException {
+
 		currentBlock = club.enterClub(myLocation);  //enter through entrance
 		inRoom=true;
 		System.out.println("Thread "+this.ID + " entered club at position: " + currentBlock.getX()  + " " +currentBlock.getY() );
