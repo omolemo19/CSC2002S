@@ -71,10 +71,10 @@ public class ClubGrid {
 	}
 	
 	public synchronized GridBlock enterClub(PeopleLocation myLocation) throws InterruptedException  {
-		counter.personArrived(); //add to counter of people waiting even when max capacity is reached
-		while (counter.overCapacity()){ //while club is full, threads must wait outside
+		while (counter.overCapacity()){
 			wait();
 		}
+		counter.personArrived(); //add to counter of people waiting 
 		entrance.get(myLocation.getID());
 		counter.personEntered(); //add to counter
 		myLocation.setLocation(entrance);

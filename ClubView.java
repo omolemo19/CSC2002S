@@ -3,6 +3,7 @@ package clubSimulation;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Font;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JPanel;
 
 public class ClubView extends JPanel implements Runnable {
@@ -14,6 +15,7 @@ public class ClubView extends JPanel implements Runnable {
 		private int hIncr; //height of each block
 		private int maxY; //maximum Y  for the grid
 		private int maxX; //Maximum X for the grid
+		private AtomicInteger barmanX;
 
 		ClubGrid grid; //shared grid
 		
@@ -28,6 +30,7 @@ public class ClubView extends JPanel implements Runnable {
 		    int height = getHeight();
 		    wIncr= width/(maxX+2); //1 space on either side
 		    hIncr= height/(maxY+2);//2 spaces on bottom
+			barmanX = new AtomicInteger(1); // Initialize barman's position
 		}
 		
 		public void paintComponent(Graphics g) {
@@ -79,6 +82,12 @@ public class ClubView extends JPanel implements Runnable {
 			 g.setFont(new Font("Helvetica", Font.BOLD, hIncr/2));
 			 
 			 //barman should go here
+
+			g.setColor(Color.magenta); // You can choose a color for the barman
+			int barmanXCoord = barmanX.get();
+			g.fillOval(barmanXCoord * wIncr + wIncr / 4, maxY * hIncr - hIncr / 2, wIncr / 2, hIncr / 2);
+			g.setColor(Color.black);
+			g.drawString("Andre", barmanXCoord * wIncr + wIncr / 4, maxY * hIncr - hIncr / 2 + hIncr / 4);
 			 
 			 //patrons
 		    for (int i=0;i<noPatrons;i++){	    	
@@ -102,5 +111,8 @@ public class ClubView extends JPanel implements Runnable {
 		}
 
 	}
+
+
+
 
 

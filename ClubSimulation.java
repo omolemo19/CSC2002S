@@ -70,7 +70,7 @@ public class ClubSimulation {
 
 		startB.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e)  {
-				// open latch when start button is pressed
+			    	  	// THIS DOES NOTHING - MUST BE FIXED
 				Clubgoer.latch.countDown();
 
 		    }
@@ -81,7 +81,7 @@ public class ClubSimulation {
 			// add the listener to the jbutton to handle the "pressed" event
 			pauseB.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent e) {
-		    		// if not paused, set pause to true and change button to "Resume"
+		    		// THIS DOES NOTHING - MUST BE FIXED
 				  if (!Clubgoer.isPaused.get()){
 					  Clubgoer.isPaused.set(true);
 					  pauseB.setText("Resume");
@@ -166,3 +166,7 @@ public class ClubSimulation {
 	}
 
 }
+
+
+
+

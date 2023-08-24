@@ -59,3 +59,7 @@ public class PeopleLocation  { // this is a separate class so don't have to acce
 	public synchronized  Color getColor() { return myColor; }
 	public synchronized  void setColor(Color myColor) { this.myColor= myColor; }
 }
+
+
+
+

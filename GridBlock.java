@@ -28,14 +28,14 @@ public class GridBlock {
 	
 	public  int getY() {return coords[1];}
 	
-	public synchronized boolean get(int threadID) throws InterruptedException {
+	public  boolean get(int threadID) throws InterruptedException {
 		if (isOccupied==threadID) return true; //thread Already in this block
 		if (isOccupied>=0) return false; //space is occupied
 		isOccupied=threadID;  //set ID to thread that had block
 		return true;
 	}
 		
-	public synchronized void release() {
+	public void release() {
 		isOccupied=-1;
 	}
 	
@@ -44,14 +44,14 @@ public class GridBlock {
 		return true;
 	}
 	
-	public synchronized boolean isExit() {
+	public boolean isExit() {
 		return isExit;	
 	}
 
-	public synchronized boolean isBar() {
+	public   boolean isBar() {
 		return isBar;
 	}
-	public synchronized boolean isDanceFloor() {
+	public   boolean isDanceFloor() {
 		return isDance;
 	}
 
