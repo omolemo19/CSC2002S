@@ -37,14 +37,14 @@ public class PeopleCounter {
 	//someone arrived outside
 	public synchronized void personArrived() {
 		peopleOutSide.getAndIncrement();
-		notifyAll();
+
 	}
 	
 	//someone got inside
 	public synchronized void personEntered() {
 		peopleOutSide.getAndDecrement();
 		peopleInside.getAndIncrement();
-		notifyAll();
+
 	}
 
 	//someone left

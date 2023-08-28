@@ -1,9 +1,30 @@
 # CSC2002S
 // Omolemo Modise
 // MDSOMO001
-// PCP1
+// PCP2
 
-This program uses a Monte Carlo approach to determine the minimum (lowest point) of a two-dimensional mathematical function f(x,y) within a given range - this is an optimisation problem. Consider the 2D function to be the height of a terrain, and the program's duty to identify the lowest point inside a specified rectangle area.
-This area is represented as a discrete grid of points with equal spacing. Due to the size of this grid and the enormous expense of computing the function for all of the points, the Monte Carlo algorithm instead takes a probabilistic approach to determining the minimum of the function without computing all of the values in the grid. This is accomplished by a series of searches, as seen below.
-A starting grid point is chosen at random for each search, and its height is determined. The search then attempts to proceed downhill from that location by computing the height of each of the four adjacent grid points and then moving to the one with the lowest value. It then attempts to migrate downhill from this new grid point in the same manner. The search is repeated until it is unable to identify a downhill direction: all of the nearby points have a higher value than the current position. The search has reached a local minimum and has come to an end.
-With enough distinct searches, this technique has a high likelihood of finding a "global" minimum (the minimum point in the region of interest). More searches enhance the likelihood of discovering the global minimum, but they also raise the computing cost. This program uses parallel programming via the Fork/Join framework in order to speed up the algorithm.
+Club Simulation Project
+This project is a Java-based simulation of a club where patrons and a barman interact in a predefined environment. The simulation is implemented using multithreading and graphical user interface (GUI) components.
+
+Overview
+The club simulation consists of the following components:
+
+ClubGrid: Represents the club's layout as a grid of blocks. Manages movement and occupancy of blocks by patrons and the barman.
+GridBlock: Represents a block within the club's grid. Keeps track of occupancy by patrons and the barman.
+PeopleCounter: Manages the count of people inside, outside, and leaving the club.
+PeopleLocation: Represents the location and attributes of a patron.
+Clubgoer: Thread class representing a patron's behavior in the club.
+Barman: Thread class representing the barman's behavior in the club.
+ClubView: GUI panel displaying the club's layout and current state.
+CounterDisplay: Threaded display of people counters.
+ClubSimulation: Main class to start the simulation.
+Features
+Patrons enter the club, dance, and exit.
+Patrons wait outside the club if the maximum capacity is reached.
+Patrons avoid each other and obstacles while moving within the club.
+Patrons are assigned unique colors for identification.
+The barman serves drinks to patrons at the bar.
+The barman moves behind the bar and serves drinks to patrons.
+Patrons and the barman use multithreading for concurrent behavior.
+GUI panel provides a visual representation of the club's layout and state.
+Counters display the number of people inside, outside, and leaving the club.

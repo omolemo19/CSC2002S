@@ -31,6 +31,7 @@ public class ClubSimulation {
 	
 	private static int maxWait=1200; //for the slowest customer
 	private static int minWait=500; //for the fastest cutomer
+	private static Barman barman;
 
 
 	public static void setupGUI(int frameX,int frameY,int [] exits) {
@@ -70,7 +71,7 @@ public class ClubSimulation {
 
 		startB.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e)  {
-			    	  	// THIS DOES NOTHING - MUST BE FIXED
+				// when start button is pressed, latch releases and patrons enter
 				Clubgoer.latch.countDown();
 
 		    }
@@ -81,7 +82,7 @@ public class ClubSimulation {
 			// add the listener to the jbutton to handle the "pressed" event
 			pauseB.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent e) {
-		    		// THIS DOES NOTHING - MUST BE FIXED
+		    		// when pause is pressed, changes the atomic boolean isPaused accordingly
 				  if (!Clubgoer.isPaused.get()){
 					  Clubgoer.isPaused.set(true);
 					  pauseB.setText("Resume");
@@ -138,6 +139,8 @@ public class ClubSimulation {
 	   
 	    peopleLocations = new PeopleLocation[noClubgoers];
 		patrons = new Clubgoer[noClubgoers];
+		barman = new Barman(clubGrid, 700);
+
 		
 		Random rand = new Random();
 
@@ -156,6 +159,7 @@ public class ClubSimulation {
 		//Start counter thread - for updating counters
 		Thread s = new Thread(counterDisplay);
 		s.start();
+		barman.start();
 
 		for (int i=0;i<noClubgoers;i++) {
 			patrons[i].start();

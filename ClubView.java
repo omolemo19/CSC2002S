@@ -87,7 +87,7 @@ public class ClubView extends JPanel implements Runnable {
 			int barmanXCoord = barmanX.get();
 			g.fillOval(barmanXCoord * wIncr + wIncr / 4, maxY * hIncr - hIncr / 2, wIncr / 2, hIncr / 2);
 			g.setColor(Color.black);
-			g.drawString("Andre", barmanXCoord * wIncr + wIncr / 4, maxY * hIncr - hIncr / 2 + hIncr / 4);
+			g.drawString("Andre", barmanXCoord * wIncr + wIncr / 4, (maxY * hIncr - hIncr / 2 + hIncr / 4)+1);
 			 
 			 //patrons
 		    for (int i=0;i<noPatrons;i++){	    	

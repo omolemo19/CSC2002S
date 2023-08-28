@@ -57,7 +57,7 @@ public class Clubgoer extends Thread {
 
 	//check to see if user pressed pause button
 	private void checkPause() {
-		// THIS DOES NOTHING - MUST BE FIXED
+		// checks isPaused atomic boolean to see if threads need to pause
 		while (isPaused.get()) {
 			try {
 				sleep(100);
@@ -70,9 +70,8 @@ public class Clubgoer extends Thread {
 
 		}
 	private void startSim() {
-		// THIS DOES NOTHING - MUST BE FIXED
 		try {
-			latch.await();
+			latch.await(); // latch where threads wait
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
